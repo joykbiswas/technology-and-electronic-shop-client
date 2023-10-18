@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 
 const BrandName = ({setSelectProducts}) => {
-    const [logos, setLogos] =useState([])
+    const [brands, setBrands] =useState([])
   useEffect(() => {
     fetch("/brand.json")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setLogos(data)
+        setBrands(data)
       });
   },[]);
 
@@ -22,13 +23,13 @@ const BrandName = ({setSelectProducts}) => {
          <hr  className="w-20 border-4 "/>
         <div className="flex flex-wrap justify-center my-7">
         {
-            logos.map(logo=>(<div className="w-44 border m-2"
-             key={logo.id}>
+            brands.map(logo=>(<Link to={`/brand-product/${logo.brandName}`} key={logo.id}>< div className="w-44 border m-2"
+             >
                 <img className="border h-32  "
                 src={logo.img} alt="" />
                 <button onClick={() =>handleSelected(logo.brandName)}
                 className="p-4 w-full bg-red-400 text-white  " >SHOW PRODUCT</button>
-                  </div>))
+                  </ div> </Link>))
         }
         <div>
 

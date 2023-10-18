@@ -1,10 +1,15 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+// import { useLoaderData } from 'react-router-dom';
 
-const PhonesCard = ({ phones }) => {
-    const {image, brandName, name, price, rating, type} = phones;
-//   console.log(phones);
+
+const ProductsCard = ({ products }) => {
+    const {_id,image, brandName, name, price, rating, type} = products;
+
+    
   return (
     <div>
+      
       <div className="card  bg-base-100 shadow-xl">
         <figure>
           <img className='h-64 pt-3'
@@ -24,7 +29,9 @@ const PhonesCard = ({ phones }) => {
           </div>
           <p></p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">details</button>
+           <Link to={`/product/${_id}`}> 
+           <button  className="btn btn-primary">details</button>
+           </Link>
             <button className="btn btn-primary">update</button>
           </div>
         </div>
@@ -33,7 +40,7 @@ const PhonesCard = ({ phones }) => {
   );
 };
 
-export default PhonesCard;
-PhonesCard.propTypes ={
-    phones:PropTypes.object
+export default ProductsCard;
+ProductsCard.propTypes ={
+  products:PropTypes.object
 }
