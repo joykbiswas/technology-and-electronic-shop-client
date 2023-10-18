@@ -1,10 +1,33 @@
+
+import {  useState } from "react";
 import HomeBanner from "../Banner/HomeBanner";
+import BrandName from "../BrandName/BrandName";
+// import Phones from "../phones/phones";
+import { useLoaderData } from "react-router-dom";
+import PhonesCard from "../PhonesCard/PhonesCard";
 
 const Home = () => {
+    const phoneLoader =useLoaderData()
+    console.log(phoneLoader);
+    const [selectProducts, setSelectProducts] = useState(null)
+   
+    const filterProduct = selectProducts ? 
+                            phoneLoader.filter((phones) =>phones.brandName === selectProducts)
+                            : phoneLoader;
     return (
         <div>
             <h2 className="text-2xl">Home</h2>
+            
             <HomeBanner></HomeBanner>
+            <BrandName setSelectProducts={setSelectProducts}></BrandName>
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+           {
+            filterProduct.map(aProduct =>(<PhonesCard key={aProduct._id}
+            phones={aProduct}
+            ></PhonesCard>))
+           }
+           </div>
+            {/* <Phones></Phones> */}
         </div>
     );
 };

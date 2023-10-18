@@ -4,6 +4,9 @@ import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import AddProduct from "../AddProduct/AddProduct";
+import Phones from "../phones/phones";
+import BrandName from "../BrandName/BrandName";
+import PhonesCard from "../PhonesCard/PhonesCard";
 
   const router = createBrowserRouter([
     {
@@ -12,7 +15,9 @@ import AddProduct from "../AddProduct/AddProduct";
       children:[
         {
             path:"/",
-            element:<Home></Home>
+            element:<Home></Home>,
+            loader:() => fetch('http://localhost:5000/phone')
+            
         },
         {
             path:"/login",
@@ -25,6 +30,21 @@ import AddProduct from "../AddProduct/AddProduct";
         {
             path:'/addProduct',
             element:<AddProduct></AddProduct>
+        },
+        {
+          path:'/phones',
+          element:<Phones></Phones>,
+          // loader:()=> fetch('http://localhost:5000/phone')
+        },
+        {
+          path:"/",
+          element:<PhonesCard></PhonesCard>
+
+        },
+        {
+          path:'/brandName',
+          element:<BrandName></BrandName>,
+          loader:()=>fetch('/brand.json')
         }
       ]
     },

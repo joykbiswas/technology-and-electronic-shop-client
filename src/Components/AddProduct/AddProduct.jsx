@@ -16,8 +16,9 @@ const AddProduct = () => {
 
         fetch('http://localhost:5000/phone',{
             method:'POST',
-            headers:
-            {'content-type':'application/json'},
+            headers:{
+              'content-type':'application/json'
+            },
             body:JSON.stringify(newProduct)
         })
         .then(res =>res.json())
