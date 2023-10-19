@@ -5,6 +5,7 @@ import BrandName from "../BrandName/BrandName";
 // import Phones from "../phones/phones";
 import { useLoaderData } from "react-router-dom";
 import ProductsCard from "../ProductsCard/ProductsCard";
+import Deals from "./Deals";
 
 const Home = () => {
     const phoneLoader =useLoaderData()
@@ -15,7 +16,7 @@ const Home = () => {
                             phoneLoader.filter((phones) =>phones.brandName === selectProducts)
                             : phoneLoader;
     return (
-        <div>
+        <div className="">
             
             
             <HomeBanner></HomeBanner>
@@ -28,6 +29,7 @@ const Home = () => {
            } */}
            </div>
             {/* <Phones></Phones> */}
+            <Deals></Deals>
         </div>
     );
 };
