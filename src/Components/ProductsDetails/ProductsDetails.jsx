@@ -22,27 +22,29 @@ const ProductsDetails = ({product}) => {
         }
         else{
             const isExists = productItems.find(product =>product._id === _id)
-            if(isExists){
+            if(!isExists){
                 addedProduct.push(...productItems,product)
                 localStorage.setItem('products',JSON.stringify(addedProduct))
                 
                 Swal.fire({
                   title: 'success!',
-                  text: 'you select products successfully',
+                  text: 'you select2 products successfully',
                   icon: 'success',
                   confirmButtonText: 'Done'
-                })
+                })         
+                 
             }
-            // else{
-            //     // alert("You have already donation!")
-            //     Swal.fire({
-            //       title: 'Error',
-            //       text: 'You have already donation!',
-            //       icon: 'Error',
-            //       confirmButtonText: 'Done'
-            //     })
-            //     // swal("Good job!", "You have already donation!", "error");
-            // }
+            
+            else{
+               
+                Swal.fire({
+                  title: 'Error',
+                  text: 'You have already donation!',
+                  icon: 'Error',
+                  confirmButtonText: 'Done'
+                })
+                // swal("Good job!", "You have already donation!", "error");
+            }
         }
     }
     return (

@@ -9,6 +9,7 @@ import ProductsCard from "../ProductsCard/ProductsCard";
 import BrandProducts from "../BrandProducts/BrandProducts";
 import ProductsPage from "../ProductsPage/Productspage";
 import MyCart from "../MyCart/MyCart";
+import AboutUs from "../AboutUs/AboutUs";
 
   const router = createBrowserRouter([
     {
@@ -62,6 +63,10 @@ import MyCart from "../MyCart/MyCart";
         {
           path:'/my-cart',
           element:<MyCart></MyCart>
+        },
+        {
+          path:'/about_us',
+          element:<AboutUs></AboutUs>
         }
       ]
     },

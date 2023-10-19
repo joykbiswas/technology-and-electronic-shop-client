@@ -3,9 +3,10 @@ import {  useState } from "react";
 import HomeBanner from "../Banner/HomeBanner";
 import BrandName from "../BrandName/BrandName";
 // import Phones from "../phones/phones";
-import { useLoaderData } from "react-router-dom";
+import { Form, useLoaderData } from "react-router-dom";
 import ProductsCard from "../ProductsCard/ProductsCard";
 import Deals from "./Deals";
+import From from "./Form";
 
 const Home = () => {
     const phoneLoader =useLoaderData()
@@ -30,6 +31,7 @@ const Home = () => {
            </div>
             {/* <Phones></Phones> */}
             <Deals></Deals>
+            <From></From>
         </div>
     );
 };
