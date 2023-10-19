@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2'
 import PropTypes from 'prop-types';
 
 const ProductsDetails = ({product}) => {
@@ -10,22 +11,38 @@ const ProductsDetails = ({product}) => {
         if(!productItems){
             addedProduct.push(product)
             localStorage.setItem('products',JSON.stringify(addedProduct))
-            alert('you select products successfully')
-         // swal("Good job!", "Your Products selected", "success");
+            
+         Swal.fire({
+          title: 'success!',
+          text: 'you selected products successfully',
+          icon: 'success',
+          confirmButtonText: 'Done'
+        })
 
         }
         else{
             const isExists = productItems.find(product =>product._id === _id)
-            if(!isExists){
+            if(isExists){
                 addedProduct.push(...productItems,product)
                 localStorage.setItem('products',JSON.stringify(addedProduct))
-                // swal("Good job!", "Your Products selected!", "success");
-                alert('you select products successfully')
+                
+                Swal.fire({
+                  title: 'success!',
+                  text: 'you select products successfully',
+                  icon: 'success',
+                  confirmButtonText: 'Done'
+                })
             }
-            else{
-                alert("You have already donation!")
-                // swal("Good job!", "You have already donation!", "error");
-            }
+            // else{
+            //     // alert("You have already donation!")
+            //     Swal.fire({
+            //       title: 'Error',
+            //       text: 'You have already donation!',
+            //       icon: 'Error',
+            //       confirmButtonText: 'Done'
+            //     })
+            //     // swal("Good job!", "You have already donation!", "error");
+            // }
         }
     }
     return (
