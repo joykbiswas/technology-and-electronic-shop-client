@@ -1,7 +1,12 @@
 import Swal from 'sweetalert2'
 
-const AddProduct = () => {
-    const handleAddProduct = e=>{
+import { useLoaderData } from "react-router-dom";
+
+const UpdateProduct = () => {
+    const product = useLoaderData(); 
+    const {_id,image, brandName, name, price, rating, type,description} = product;
+
+    const handleUpdateProduct = e=>{
         e.preventDefault()
         const form =e.target;
 
@@ -12,38 +17,41 @@ const AddProduct = () => {
         const price = form.price.value;
         const description = form.description.value;
         const rating = form.rating.value;
-        console.log(image,name,brandName,type,price,description,rating);
-        const newProduct ={image,name,brandName,type,price,description,rating}
-        console.log(newProduct);
+        // console.log(image,name,brandName,type,price,description,rating);
 
-        fetch('http://localhost:5000/phone',{
-            method:'POST',
+        const updateProduct ={image,name,brandName,type,price,description,rating}
+        console.log(updateProduct);
+
+        fetch(`http://localhost:5000/phone/brandname/${_id}`,{
+            method:'PUT',
             headers:{
               'content-type':'application/json'
             },
-            body:JSON.stringify(newProduct)
+            body:JSON.stringify(updateProduct)
         })
         .then(res =>res.json())
         .then(data=>{
             console.log(data);
-            if(data.insertedId){
-              Swal.fire({
-                title: 'success!',
-                text: 'your products added successfully',
-                icon: 'success',
-                confirmButtonText: 'Done'
-              })
+            if(data.modifiedCount > 0){
+                
+                Swal.fire({
+                    title: 'success!',
+                    text: 'products updated successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Done'
+                  })
             }
         })
         
     }
-  return (
-    <div className="">
-      <div className="hero min-h-screen bg-base-200">
+    console.log(product);
+    return (
+        <div>
+           <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse w-2/3">
           
           <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
-            <form onSubmit={handleAddProduct}
+            <form onSubmit={handleUpdateProduct}
              className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -52,6 +60,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   name="image"
+                  defaultValue={image}
                   placeholder="image URL"
                   className="input input-bordered"
                   required
@@ -64,6 +73,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   name="name"
+                  defaultValue={name}
                   placeholder="product name"
                   className="input input-bordered"
                   required
@@ -76,6 +86,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   name="brandName"
+                  defaultValue={brandName}
                   placeholder="Brand name"
                   className="input input-bordered"
                   required
@@ -88,6 +99,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   name="type"
+                  defaultValue={type}
                   placeholder="product type"
                   className="input input-bordered"
                   required
@@ -100,6 +112,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   name="price"
+                  defaultValue={price}
                   placeholder="product Price"
                   className="input input-bordered"
                   required
@@ -112,6 +125,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   name="description"
+                  defaultValue={description}
                   placeholder="description"
                   className="input input-bordered"
                   required
@@ -124,6 +138,7 @@ const AddProduct = () => {
                 <input
                   type="text"
                   name="rating"
+                  defaultValue={rating}
                   placeholder=" rating "
                   className="input input-bordered"
                   required
@@ -132,14 +147,14 @@ const AddProduct = () => {
               </div>
 
               <div className="form-control mt-6">
-                <button className="btn btn-primary">ADD</button>
+                <button className="btn btn-primary">UPDATE</button>
               </div>
             </form>
           </div>
         </div>
       </div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default AddProduct;
+export default UpdateProduct;

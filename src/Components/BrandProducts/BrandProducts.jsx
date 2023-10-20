@@ -16,9 +16,16 @@ const BrandProducts = () => {
          
             <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
+                  data.length>0 ?
                     data.map(product=><ProductsCard key={product._id}
                          products={product} id={product}
                          ></ProductsCard>)
+                    :<div className="">
+                        <div className="h-[70vh]  text-center items-center ">
+                       <p className="text-4xl font-bold">No Product found !</p>
+                       
+                     </div>
+                    </div>
                 }
             </div>
         </div>
@@ -26,3 +33,9 @@ const BrandProducts = () => {
 };
 
 export default BrandProducts;
+
+/*
+ data.map(product=><ProductsCard key={product._id}
+                         products={product} id={product}
+                         ></ProductsCard>)
+*/

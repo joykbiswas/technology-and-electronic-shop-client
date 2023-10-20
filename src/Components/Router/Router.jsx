@@ -10,6 +10,7 @@ import BrandProducts from "../BrandProducts/BrandProducts";
 import ProductsPage from "../ProductsPage/Productspage";
 import MyCart from "../MyCart/MyCart";
 import AboutUs from "../AboutUs/AboutUs";
+import UpdateProduct from "../UpdateProduct/UpdateProduct";
 
   const router = createBrowserRouter([
     {
@@ -34,11 +35,7 @@ import AboutUs from "../AboutUs/AboutUs";
             path:'/addProduct',
             element:<AddProduct></AddProduct>
         },
-        // {
-        //   path:'/phones',
-        //   element:<Phones></Phones>,
-        //   // loader:()=> fetch('http://localhost:5000/phone')
-        // },
+        
         {
           path:"/productscard",
           element:<ProductsCard></ProductsCard>
@@ -58,7 +55,13 @@ import AboutUs from "../AboutUs/AboutUs";
           path:"/product/:_id",
           element:<ProductsPage></ProductsPage>,
           loader:()=>fetch('http://localhost:5000/phone')
-          // loader:({params})=>fetch(`http://localhost:5000/phone/${params._id}`)
+          
+        },
+        {
+          // path:'/update-Product/:id',
+          path:'/brand-product/:brand/update-product/:id',
+          element:<UpdateProduct></UpdateProduct>,
+          loader:({params}) =>fetch(`http://localhost:5000/phone/brandname/${params.id}`)
         },
         {
           path:'/my-cart',
