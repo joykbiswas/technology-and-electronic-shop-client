@@ -7,6 +7,8 @@ import { Form, useLoaderData } from "react-router-dom";
 import ProductsCard from "../ProductsCard/ProductsCard";
 import Deals from "./Deals";
 import From from "./Form";
+import HomeGetOffer from "./HomeGetOffer";
+
 
 const Home = () => {
     const phoneLoader =useLoaderData()
@@ -23,14 +25,11 @@ const Home = () => {
             <HomeBanner></HomeBanner>
             <BrandName setSelectProducts={setSelectProducts}></BrandName>
            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-           {/* {
-            filterProduct.map(aProduct =>(<ProductsCard key={aProduct._id}
-            phones={aProduct}
-            ></ProductsCard>))
-           } */}
+           
            </div>
-            {/* <Phones></Phones> */}
+            
             <Deals></Deals>
+           <HomeGetOffer></HomeGetOffer>
             <From></From>
         </div>
     );

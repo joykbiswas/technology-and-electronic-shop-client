@@ -22,10 +22,10 @@ const Register = () => {
     const password = e.target.password.value;
     console.log(email, password);
 
-    if (!/^(?=.*[A-Z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{6,}$/.test(password)) {
+    if (!/^(?=.*[A-Z])(?=.*[@#$%^&+=!])(.{6,12})$/.test(password)) {
       setError("Minimum six characters, at least one uppercase and special character");
       console.log(
-        "Minimum eight characters, at least one letter and one number"
+        "Minimum six characters,at least one uppercase and special character"
       );
     } else {
       console.log("password ok");
