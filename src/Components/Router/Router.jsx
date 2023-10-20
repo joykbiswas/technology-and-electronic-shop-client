@@ -11,6 +11,7 @@ import ProductsPage from "../ProductsPage/Productspage";
 import MyCart from "../MyCart/MyCart";
 import AboutUs from "../AboutUs/AboutUs";
 import UpdateProduct from "../UpdateProduct/UpdateProduct";
+import PrivateRoute from "./PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -48,7 +49,7 @@ import UpdateProduct from "../UpdateProduct/UpdateProduct";
         },
         {
           path:'/brand-product/:brandname',
-          element:<BrandProducts></BrandProducts>,
+          element:<PrivateRoute><BrandProducts></BrandProducts></PrivateRoute>,
           loader:({params})=>fetch(`http://localhost:5000/phone/${params.brandname}`)
         },
         {
@@ -65,7 +66,7 @@ import UpdateProduct from "../UpdateProduct/UpdateProduct";
         },
         {
           path:'/my-cart',
-          element:<MyCart></MyCart>
+          element:<PrivateRoute><MyCart></MyCart></PrivateRoute>
         },
         {
           path:'/about_us',
