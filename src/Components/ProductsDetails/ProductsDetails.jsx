@@ -28,7 +28,7 @@ const ProductsDetails = ({product}) => {
                 
                 Swal.fire({
                   title: 'success!',
-                  text: 'you select2 products successfully',
+                  text: 'you selected products successfully',
                   icon: 'success',
                   confirmButtonText: 'Done'
                 })         
@@ -39,11 +39,11 @@ const ProductsDetails = ({product}) => {
                
                 Swal.fire({
                   title: 'Error',
-                  text: 'You have already donation!',
+                  text: 'You have already selected!',
                   icon: 'Error',
                   confirmButtonText: 'Done'
                 })
-                // swal("Good job!", "You have already donation!", "error");
+                
             }
         }
     }

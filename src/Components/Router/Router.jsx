@@ -21,7 +21,7 @@ import PrivateRoute from "./PrivateRoute";
         {
             path:"/",
             element:<Home></Home>,
-            loader:() => fetch('http://localhost:5000/phone')
+            loader:() => fetch('https://technology-and-electronic-shop-server-eqm5nhs7e.vercel.app/phone')
             
         },
         {
@@ -34,7 +34,7 @@ import PrivateRoute from "./PrivateRoute";
         },
         {
             path:'/addProduct',
-            element:<AddProduct></AddProduct>
+            element:<PrivateRoute><AddProduct></AddProduct></PrivateRoute>
         },
         
         {
@@ -50,19 +50,19 @@ import PrivateRoute from "./PrivateRoute";
         {
           path:'/brand-product/:brandname',
           element:<PrivateRoute><BrandProducts></BrandProducts></PrivateRoute>,
-          loader:({params})=>fetch(`http://localhost:5000/phone/${params.brandname}`)
+          loader:({params})=>fetch(`https://technology-and-electronic-shop-server-eqm5nhs7e.vercel.app/phone/${params.brandname}`)
         },
         {
           path:"/product/:_id",
           element:<ProductsPage></ProductsPage>,
-          loader:()=>fetch('http://localhost:5000/phone')
+          loader:()=>fetch('https://technology-and-electronic-shop-server-eqm5nhs7e.vercel.app/phone')
           
         },
         {
-          // path:'/update-Product/:id',
+          
           path:'/brand-product/:brand/update-product/:id',
-          element:<UpdateProduct></UpdateProduct>,
-          loader:({params}) =>fetch(`http://localhost:5000/phone/brandname/${params.id}`)
+          element:<PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
+          loader:({params}) =>fetch(`https://technology-and-electronic-shop-server-eqm5nhs7e.vercel.app/phone/brandname/${params.id}`)
         },
         {
           path:'/my-cart',

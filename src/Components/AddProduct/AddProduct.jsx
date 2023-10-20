@@ -16,7 +16,7 @@ const AddProduct = () => {
         const newProduct ={image,name,brandName,type,price,description,rating}
         console.log(newProduct);
 
-        fetch('http://localhost:5000/phone',{
+        fetch('https://technology-and-electronic-shop-server-eqm5nhs7e.vercel.app/phone',{
             method:'POST',
             headers:{
               'content-type':'application/json'
