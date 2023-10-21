@@ -1,7 +1,10 @@
 
 const Deals = () => {
     return (
-        <div className="mb-24 ">
+        <div className="mb-24 " 
+        data-aos="fade-up"
+     data-aos-duration="3000"
+        >
             <h2 className="text-5xl font-bold">HOT DEALS</h2>
             <hr  className="w-20 border-4 border-red-500 mt-4 mb-7 "/>
             <div className="flex flex-wrap gap-5 my-4 justify-center">

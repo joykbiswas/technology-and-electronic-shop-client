@@ -21,7 +21,10 @@ const BrandName = ({setSelectProducts}) => {
     <div>
          <h2 className="text-5xl font-bold py-8  ">Our category</h2>
          <hr  className="w-20 border-4 "/>
-        <div className="flex flex-wrap justify-center my-7">
+        <div className="flex flex-wrap justify-center my-7" 
+        data-aos="fade-up"
+        data-aos-duration="2000"
+        >
         {
             brands.map(logo=>(<Link to={`/brand-product/${logo.brandName}`} key={logo.id}>< div className="w-44 border m-2"
              >

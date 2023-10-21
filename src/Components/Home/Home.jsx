@@ -8,6 +8,7 @@ import ProductsCard from "../ProductsCard/ProductsCard";
 import Deals from "./Deals";
 import From from "./Form";
 import HomeGetOffer from "./HomeGetOffer";
+import SpecialProduct from "./SpecialProduct";
 
 
 const Home = () => {
@@ -30,6 +31,7 @@ const Home = () => {
             
             <Deals></Deals>
            <HomeGetOffer></HomeGetOffer>
+           <SpecialProduct></SpecialProduct>
             <From></From>
         </div>
     );
@@ -37,13 +39,4 @@ const Home = () => {
 
 export default Home;
 
- /*
-
- echo "# b8a10-brandshop-client-side-joykbiswas" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/programming-hero-web-course-4/b8a10-brandshop-client-side-joykbiswas.git
-git push -u origin main
- */
+ 

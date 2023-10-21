@@ -25,7 +25,12 @@ const AboutUs = () => {
                 </div>
             </div>
             </div>
-            <div className="md:col-span-5 sm:col-span-12 m-3">
+            <div className="md:col-span-5 sm:col-span-12 m-3"     
+            data-aos="fade-left"
+            data-aos-anchor="#example-anchor"
+            data-aos-offset="500"
+            data-aos-duration="500"
+            >
                 <img className="mb-3 w-full " src="https://i.ibb.co/CmrM4vt/about-us-img-11-1.png" alt="" />
             </div>
         </div>

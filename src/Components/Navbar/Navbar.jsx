@@ -1,23 +1,23 @@
+import { AiOutlineDown } from 'react-icons/ai';
+
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 // import userDefaultPic from "../../../assets/user.png"
-import userDefaultPic from "../../assets/user.png"
+import userDefaultPic from "../../assets/user.png";
 // import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
-  const {user,logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
-  const handleSignOut=() =>{
+  const handleSignOut = () => {
     logOut()
-    .then(result =>{
-      console.log('user sign out',result);
-    })
-    .catch(error=>console.error(error))
-    
-  }
+      .then((result) => {
+        console.log("user sign out", result);
+      })
+      .catch((error) => console.error(error));
+  };
 
- 
   return (
     <div className="border-b   ">
       <div className="navbar  justify-between my-3">
@@ -60,20 +60,72 @@ const Navbar = () => {
                         Home
                       </NavLink>
                     </li>
-                    <li>
+                    
+
+
+<NavLink>
+                  <div className="dropdown dropdown-hover dropdown-right ">
+                    <label tabIndex={0} className="text-xl flex items-center justify-center ">
+                      Page <span className='text-sm pt-2 ps-1'><AiOutlineDown></AiOutlineDown></span>
+                    </label>
+                    <ul
+                      tabIndex={0}
+                      className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                    >
+                      <li>
+                    <NavLink
+                      to="/about_us"
+                      className={({ isActive, isPending }) =>
+                        isPending
+                          ? "pending"
+                          : isActive
+                          ? "text-red-500 text-xl underline"
+                          : " text-xl "
+                      }
+                    >
+                      About US
+                    </NavLink>
+                  </li>
+                      <li>
                       <NavLink
-                        to="/about_us"
-                        className={({ isActive, isPending }) =>
-                          isPending
-                            ? "pending"
-                            : isActive
-                            ? "text-red-500 text-xl  underline"
-                            : "text-xl"
-                        }
-                      >
-                        About Us
-                      </NavLink>
-                    </li>
+                      to="/contact_us"
+                      className={({ isActive, isPending }) =>
+                        isPending
+                          ? "pending"
+                          : isActive
+                          ? "text-red-500 text-xl underline"
+                          : " text-xl "
+                      }
+                    >
+                      Contact us
+                    </NavLink>
+                      </li>
+                      <li>
+                      <NavLink
+                      to="/error"
+                      className={({ isActive, isPending }) =>
+                        isPending
+                          ? "pending"
+                          : isActive
+                          ? "text-red-500 text-xl underline"
+                          : " text-xl "
+                      }
+                    >
+                     404 page
+                    </NavLink>
+                      </li>
+                    </ul>
+                  </div>
+
+                  </NavLink>
+                  
+
+
+                    
+                      
+
+
+
                     <li>
                       <NavLink
                         to="/addProduct"
@@ -85,7 +137,7 @@ const Navbar = () => {
                             : "text-xl"
                         }
                       >
-                         Add Product
+                        Add Product
                       </NavLink>
                     </li>
                     <li>
@@ -99,13 +151,17 @@ const Navbar = () => {
                             : "text-xl"
                         }
                       >
-                         My Cart
+                        My Cart
                       </NavLink>
                     </li>
                     <li>
-                    {
-                     user ? <button onClick={handleSignOut} className="btn btn-sm">Sign Out</button>:''
-                     }
+                      {user ? (
+                        <button onClick={handleSignOut} className="btn btn-sm">
+                          Sign Out
+                        </button>
+                      ) : (
+                        ""
+                      )}
                     </li>
                   </ul>
                 </div>
@@ -135,7 +191,17 @@ const Navbar = () => {
                       Home
                     </NavLink>
                   </li>
-                  <li>
+                  
+                  <NavLink>
+                  <div className="dropdown dropdown-hover  ">
+                    <label tabIndex={0} className="text-xl flex items-center justify-center ">
+                      Page <span className='text-sm pt-2 ps-1'><AiOutlineDown></AiOutlineDown></span>
+                    </label>
+                    <ul
+                      tabIndex={0}
+                      className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                    >
+                      <li>
                     <NavLink
                       to="/about_us"
                       className={({ isActive, isPending }) =>
@@ -146,9 +212,43 @@ const Navbar = () => {
                           : " text-xl "
                       }
                     >
-                      About Us
+                      About US
                     </NavLink>
                   </li>
+                      <li>
+                      <NavLink
+                      to="/contact_us"
+                      className={({ isActive, isPending }) =>
+                        isPending
+                          ? "pending"
+                          : isActive
+                          ? "text-red-500 text-xl underline"
+                          : " text-xl "
+                      }
+                    >
+                      Contact us
+                    </NavLink>
+                      </li>
+                      <li>
+                      <NavLink
+                      to="/error"
+                      className={({ isActive, isPending }) =>
+                        isPending
+                          ? "pending"
+                          : isActive
+                          ? "text-red-500 text-xl underline"
+                          : " text-xl "
+                      }
+                    >
+                     404 page
+                    </NavLink>
+                      </li>
+                    </ul>
+                  </div>
+
+                  </NavLink>
+                  
+                  {/* ----end----- */}
                   <li>
                     <NavLink
                       to="/addProduct"
@@ -174,59 +274,60 @@ const Navbar = () => {
                           : " text-xl "
                       }
                     >
-                     My Cart
+                      My Cart
                     </NavLink>
                   </li>
                 </ul>
               </div>
             </div>
 
-            <div>
-            
-          </div>
+            <div></div>
           </ul>
         </div>
         <div className="navbar-end">
           {/* <NavLink className="btn btn-sm" to="/login">
             Login
           </NavLink> */}
-          
-        
-          {
-            user?.email ?<div className="dropdown dropdown-end">
+
+          {user?.email ? (
+            <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-          
-          <div className="w-10 rounded-full">
-  
-            {
-              user.photoURL ? <img src={user.photoURL} /> : <img src={userDefaultPic}/>
-            }
+                <div className="w-10 rounded-full">
+                  {user.photoURL ? (
+                    <img src={user.photoURL} />
+                  ) : (
+                    <img src={userDefaultPic} />
+                  )}
+                </div>
+              </label>
 
-          </div>
-          
-          </label>
-
-          
-          <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-            <li>
-              <button className="btn btn-sm btn-ghost">{user.displayName}</button>
-            </li>
-            <li>
-            <button onClick={handleSignOut} className="btn btn-sm">Sign Out</button>
-            </li>
-          </ul>
+              <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                <li>
+                  <button className="btn btn-sm btn-ghost">
+                    {user.displayName}
+                  </button>
+                </li>
+                <li>
+                  <button onClick={handleSignOut} className="btn btn-sm">
+                    Sign Out
+                  </button>
+                </li>
+              </ul>
             </div>
-            :<Link to="/login">
-            <button className="btn btn-sm">Login</button>
+          ) : (
+            <Link to="/login">
+              <button className="btn btn-sm">Login</button>
             </Link>
-          }
-
-          
+          )}
         </div>
         <div className="hidden lg:flex">
-          {
-              user ? <button onClick={handleSignOut} className="btn btn-sm">Sign Out</button>:''
-            }
+          {user ? (
+            <button onClick={handleSignOut} className="btn btn-sm">
+              Sign Out
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
@@ -234,4 +335,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

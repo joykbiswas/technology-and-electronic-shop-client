@@ -12,11 +12,14 @@ import MyCart from "../MyCart/MyCart";
 import AboutUs from "../AboutUs/AboutUs";
 import UpdateProduct from "../UpdateProduct/UpdateProduct";
 import PrivateRoute from "./PrivateRoute";
+import ContactUs from "../Navbar/Page/ContactUs";
+import ErrorPage from "../Navbar/Page/ErrorPage";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement:<ErrorPage></ErrorPage>,
       children:[
         {
             path:"/",
@@ -71,6 +74,10 @@ import PrivateRoute from "./PrivateRoute";
         {
           path:'/about_us',
           element:<AboutUs></AboutUs>
+        },
+        {
+          path:'/contact_us',
+          element:<ContactUs></ContactUs>
         }
       ]
     },
